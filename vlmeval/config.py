@@ -1,5 +1,7 @@
 from vlmeval.vlm import *
 from vlmeval.api import *
+from .vlm.lavender import llama_vision_lavender
+from .vlm.llama_vision import llama_vision
 from functools import partial
 import os
 
@@ -1994,7 +1996,10 @@ interns1_series = {}
 for group in interns1_groups:
     interns1_series.update(group)
     
-supported_VLM = {}
+supported_VLM = {
+    'llama_vision_base': partial(llama_vision),
+    'llama_vision_lavender': partial(llama_vision_lavender)
+}
 
 model_groups = [
     ungrouped, o1_apis, api_models, xtuner_series, qwen_series, llava_series, granite_vision_series,
